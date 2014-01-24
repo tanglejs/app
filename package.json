@@ -1,0 +1,66 @@
+{
+  "name": "tangle-app",
+  "version": "0.0.0",
+  "description": "Tools for working with tangle apps",
+  "main": "index.js",
+  "directories": {
+    "man": "man",
+    "doc": "readme",
+    "lib": "lib"
+  },
+  "bin": {
+    "tangle-app": "./bin/tangle-app",
+    "tangle-app-new": "./bin/tangle-app-new"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "preferGlobal": true,
+  "author": {
+    "name": "Logan Koester",
+    "email": "logan@logankoester.com",
+    "url": "http://logankoester.com"
+  },
+  "dependencies": {
+    "nopt": "~2.1.2",
+    "nconf": "~0.6.8",
+    "tangle-config": "~0.0.0",
+    "nodemock": "~0.2.17",
+    "helmsman": "git+https://github.com/beaugunderson/node-helmsman.git",
+    "yeoman-generator": "~0.13.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-bump": "0.0.11",
+    "nixt": "0.0.1",
+    "grunt-readme-generator": "~0.3.41",
+    "marked-man": "0.0.2",
+    "marked": "~0.2.10",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-mocha-cli": "~1.5.0"
+  },
+  "keywords": [
+    "tangle",
+    "tangle-plugin"
+  ],
+  "homepage": "https://github.com/tanglejs/app",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tanglejs/app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tanglejs/app/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/tanglejs/app/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  }
+}

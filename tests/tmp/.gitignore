@@ -1,0 +1,9 @@
+*.swp
+*.swo
+tmp/*
+build/*
+node_modules/*
+.kinvey
+bower_components/*
+.grunt/*
+tests/tmp/*

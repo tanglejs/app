@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+path = require('path');
+helpers = require('yeoman-generator').test;
+
+exports.command = {
+  description: 'Create a new tangle app',
+};
+
+if (require.main === module) {
+  generator = path.join(__dirname, '..', 'new');
+  var app = helpers.createGenerator('tangle:app', [[generator, 'tangle:app']]);
+  app.run();
+}
