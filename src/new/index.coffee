@@ -12,6 +12,9 @@ module.exports = class AppGenerator extends yeoman.generators.Base
 
     @on 'end', ->
       console.log "Next steps...\n"
+      @installDependencies
+        bower: true
+        npm: true
 
     @pkg = JSON.parse(@readFileAsString(path.join(__dirname, '../package.json')))
 

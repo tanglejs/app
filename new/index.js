@@ -18,7 +18,11 @@
       this.options = options;
       this.sourceRoot(path.join(__dirname, 'templates'));
       this.on('end', function() {
-        return console.log("Next steps...\n");
+        console.log("Next steps...\n");
+        return this.installDependencies({
+          bower: true,
+          npm: true
+        });
       });
       this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
     }

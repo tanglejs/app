@@ -1,5 +1,11 @@
 path = require 'path'
 helpers = require('yeoman-generator').test
+assert = require('chai').assert
+
+asyncStub =
+  on: (key, cb) ->
+    if key is 'exit' then cb()
+    return asyncStub;
 
 describe 'generator', ->
 
@@ -9,6 +15,13 @@ describe 'generator', ->
       @app = helpers.createGenerator('tangle:app', [
         ['../../new', 'tangle:app']
       ])
+
+      # Keep track of all commands executed by spawnCommand
+      @commandsRun = []
+      @app.spawnCommand = (cmd, args) =>
+        @commandsRun.push [cmd, args]
+        return asyncStub
+
       done()
 
   it 'creates expected files', (done) ->
@@ -47,4 +60,9 @@ describe 'generator', ->
 
     @app.run {}, ->
       helpers.assertFiles expected
+      done()
+
+  it 'installs bower and npm dependencies', (done) ->
+    @app.installDependencies =>
+      assert.deepEqual(@commandsRun, [['bower', ['install']], ['npm', ['install']]])
       done()
