@@ -16,17 +16,17 @@ module.exports = (grunt) ->
 
     clean:
       docs: ['man/']
-      test: ['test/tmp/']
+      tests: ['tests/tmp/']
 
     watch:
       all:
         files: [
-          'bin/**/*',
-          'Gruntfile.coffee',
-          'subcommands/*/templates/**/*',
-          'subcommands/**/*.coffee',
-          'readme/**/*.md',
-          'tests/**/*.coffee',
+          'bin/**/*'
+          'Gruntfile.coffee'
+          'subcommands/*/templates/**/*'
+          'subcommands/**/*.coffee'
+          'readme/**/*.md'
+          'tests/**/*.coffee'
           '!tests/tmp/**/*'
         ]
         tasks: ['default']
