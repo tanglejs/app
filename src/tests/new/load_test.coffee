@@ -1,7 +1,5 @@
-assert = require 'assert'
+assert = require('chai').assert
 describe 'generator', ->
-
   it 'can be imported without blowing up', ->
-
-    app = require '../new'
+    app = require '../../new'
     assert app isnt `undefined`

@@ -13,7 +13,7 @@ describe 'generator', ->
     helpers.testDirectory path.join(__dirname, 'tmp'), (err) =>
       return done(err) if err
       @app = helpers.createGenerator('tangle:app', [
-        ['../../new', 'tangle:app']
+        ['../../../new', 'tangle:app']
       ])
 
       # Keep track of all commands executed by spawnCommand
@@ -25,7 +25,7 @@ describe 'generator', ->
       done()
 
   it 'creates expected files', (done) ->
-    
+
     # add files you expect to exist here.
     expected = [
       '.gitignore'

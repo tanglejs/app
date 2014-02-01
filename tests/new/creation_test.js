@@ -23,7 +23,7 @@
         if (err) {
           return done(err);
         }
-        _this.app = helpers.createGenerator('tangle:app', [['../../new', 'tangle:app']]);
+        _this.app = helpers.createGenerator('tangle:app', [['../../../new', 'tangle:app']]);
         _this.commandsRun = [];
         _this.app.spawnCommand = function(cmd, args) {
           _this.commandsRun.push([cmd, args]);
