@@ -16,8 +16,6 @@ module.exports = class AppGenerator extends yeoman.generators.Base
         bower: true
         npm: true
 
-    @pkg = JSON.parse(@readFileAsString(path.join(__dirname, '../../package.json')))
-
 AppGenerator::appPrompts = require('./prompts/app').prompt
 AppGenerator::authorPrompts = require('./prompts/author').prompt
 

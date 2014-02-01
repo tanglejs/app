@@ -1,3 +1,5 @@
+require 'coffee-script/register'
+
 path = require 'path'
 helpers = require('yeoman-generator').test
 assert = require('chai').assert
@@ -10,7 +12,7 @@ asyncStub =
 describe 'generator', ->
 
   beforeEach (done) ->
-    helpers.testDirectory path.join(__dirname, 'tmp'), (err) =>
+    helpers.testDirectory path.join(__dirname, '..', 'tmp'), (err) =>
       return done(err) if err
       @app = helpers.createGenerator('tangle:app', [
         [require('../../subcommands/new'), 'tangle:app']

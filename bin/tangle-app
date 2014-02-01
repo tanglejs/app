@@ -1,11 +1,9 @@
-#!/usr/bin/env node
-path = require('path');
+#!/usr/bin/env coffee
 
-exports.command = {
-  description: 'Tools for working with tangle apps',
-  arguments: null // Optional arguments string to display
-};
+path = require 'path'
 
-if (require.main === module) {
-  require(path.join(__dirname, '..', 'index.js'));
-}
+exports.command =
+  description: 'Tools for working with tangle apps'
+  arguments: null # Optional arguments string to display
+
+if require.main is module then require path.join(__dirname, '..', 'index.coffee')

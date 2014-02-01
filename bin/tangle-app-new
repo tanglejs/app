@@ -1,13 +1,11 @@
-#!/usr/bin/env node
-path = require('path');
-helpers = require('yeoman-generator').test;
+#!/usr/bin/env coffee
 
-exports.command = {
-  description: 'Create a new tangle app',
-};
+path = require 'path'
+helpers = require('yeoman-generator').test
 
-if (require.main === module) {
-  generator = path.join(__dirname, '..', 'subcommands', 'new');
-  var app = helpers.createGenerator('tangle:app', [[require(generator), 'tangle:app']]);
-  app.run();
-}
+exports.command =
+  description: 'Create a new tangle app'
+
+if require.main is module
+  generator = require(path.join(__dirname, '..', 'subcommands', 'new'))
+  helpers.createGenerator('tangle:app', [[generator, 'tangle:app']]).run()
