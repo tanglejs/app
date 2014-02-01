@@ -21,48 +21,50 @@ describe 'generator', ->
       @app.spawnCommand = (cmd, args) =>
         @commandsRun.push [cmd, args]
         return asyncStub
-
-      done()
-
-  it 'creates expected files', (done) ->
-
-    # add files you expect to exist here.
-    expected = [
-      '.gitignore'
-      'bower.json'
-      'config.js'
-      'package.json'
-      'bower_components'
-      'node_modules'
-      'app'
-      'app/initializers'
-      'app/initializers/index.coffee'
-      'app/initializers/logger.coffee'
-      'app/modules'
-      'app/primitives'
-      'app/styl'
-      'app/styl/app.styl'
-    ]
-    helpers.mockPrompt @app,
-      name: 'tangle-test-app'
-      version: '0.1.0'
-      description: 'A test app'
-      homepage: 'https://tangle-test-app.example'
-      isPrivate: true
-      author:
-        name: 'Test Author'
-        email: 'author@example.com'
-        url: 'https://author.example.com'
-        githubUsername: 'testuser'
-
-    helpers.mockPrompt @app,
-      name: 'tangle-test-app'
-
-    @app.run {}, ->
-      helpers.assertFiles expected
       done()
 
   it 'installs bower and npm dependencies', (done) ->
     @app.installDependencies =>
       assert.deepEqual(@commandsRun, [['bower', ['install']], ['npm', ['install']]])
       done()
+
+  describe 'output', ->
+    beforeEach (done) ->
+      helpers.mockPrompt @app,
+        name: 'tangle-test-app'
+        version: '0.1.0'
+        description: 'A test app'
+        homepage: 'https://tangle-test-app.example'
+        isPrivate: true
+        author:
+          name: 'Test Author'
+          email: 'author@example.com'
+          url: 'https://author.example.com'
+          githubUsername: 'testuser'
+
+      helpers.mockPrompt @app,
+        name: 'tangle-test-app'
+      done()
+
+    it 'includes expected files', (done) ->
+      # add files you expect to exist here.
+      expected = [
+        '.gitignore'
+        'bower.json'
+        'config.js'
+        'package.json'
+        'bower_components'
+        'node_modules'
+        'app'
+        'app/initializers'
+        'app/initializers/index.coffee'
+        'app/initializers/logger.coffee'
+        'app/modules'
+        'app/primitives'
+        'app/styl'
+        'app/styl/app.styl'
+      ]
+
+      @app.run {}, ->
+        helpers.assertFiles expected
+        done()
