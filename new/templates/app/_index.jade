@@ -8,8 +8,6 @@ html
     title <%= app.name %>
     script!= "window.build = " + JSON.stringify(build)
   body
-    #home
-
     script(src='js/bundle.js')
     script
       App.initialize();
