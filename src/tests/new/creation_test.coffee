@@ -13,7 +13,7 @@ describe 'generator', ->
     helpers.testDirectory path.join(__dirname, 'tmp'), (err) =>
       return done(err) if err
       @app = helpers.createGenerator('tangle:app', [
-        [require('../../new'), 'tangle:app']
+        [require('../../subcommands/new'), 'tangle:app']
       ])
 
       # Keep track of all commands executed by spawnCommand

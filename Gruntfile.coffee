@@ -25,9 +25,9 @@ module.exports = (grunt) ->
     copy:
       templates:
         expand: true
-        cwd: 'src/new/templates'
+        cwd: 'src/subcommands/new/templates'
         src: '**/*'
-        dest: 'new/templates'
+        dest: 'subcommands/new/templates'
 
     clean:
       lib: ['lib/', 'tests/', 'man/']
@@ -38,7 +38,8 @@ module.exports = (grunt) ->
           'src/**/*.coffee',
           'bin/**/*.coffee',
           'Gruntfile.coffee',
-          'src/new/templates/**/*',
+          'src/subcommands/*/templates/**/*',
+          'src/subcommands/*/prompts/**/*.coffee',
           'bin/**/*',
           'readme/**/*.md'
         ]
