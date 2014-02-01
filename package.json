@@ -24,7 +24,7 @@
   "dependencies": {
     "nopt": "~2.1.2",
     "nconf": "~0.6.8",
-    "tangle-config": "~0.0.0",
+    "tangle-config": "~0.1.0",
     "nodemock": "~0.2.17",
     "helmsman": "git+https://github.com/beaugunderson/node-helmsman.git",
     "yeoman-generator": "~0.13.0"
