@@ -2,16 +2,15 @@
   "name": "tangle-app",
   "version": "0.0.0",
   "description": "Tools for working with tangle apps",
-  "main": "index.js",
+  "main": "index.coffee",
   "directories": {
     "man": "man",
-    "doc": "readme",
-    "lib": "lib"
+    "doc": "readme"
   },
   "bin": {
-    "tangle-app": "./bin/tangle-app",
-    "tangle-app-new": "./bin/tangle-app-new",
-    "tangle-app-build": "./bin/tangle-app-build"
+    "tangle-app": "bin/tangle-app",
+    "tangle-app-new": "bin/tangle-app-new",
+    "tangle-app-build": "bin/tangle-app-build"
   },
   "scripts": {
     "test": "grunt test"
@@ -24,7 +23,6 @@
   },
   "dependencies": {
     "tangle-config": "~0.1.0",
-    "nodemock": "~0.3.3",
     "helmsman": "git+https://github.com/beaugunderson/node-helmsman.git",
     "yeoman-generator": "~0.16.0",
     "grunt-contrib-clean": "~0.5.0",
@@ -34,7 +32,6 @@
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-bump": "0.0.13",
-    "nixt": "~0.3.0",
     "grunt-readme-generator": "~0.3.41",
     "marked-man": "~0.1.1",
     "marked": "~0.3.1",
