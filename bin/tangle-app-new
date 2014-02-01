@@ -8,6 +8,6 @@ exports.command = {
 
 if (require.main === module) {
   generator = path.join(__dirname, '..', 'new');
-  var app = helpers.createGenerator('tangle:app', [[generator, 'tangle:app']]);
+  var app = helpers.createGenerator('tangle:app', [[require(generator), 'tangle:app']]);
   app.run();
 }
