@@ -38,6 +38,7 @@ module.exports = (grunt) ->
           'src/**/*.coffee',
           'bin/**/*.coffee',
           'Gruntfile.coffee',
+          'src/new/templates/**/*',
           'readme/**/*.md'
         ]
         tasks: ['default']

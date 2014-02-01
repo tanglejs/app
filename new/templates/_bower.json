@@ -7,7 +7,9 @@
   "authors": [
     "<%= author.name %> <<%= author.email %>>"
   ],
-  "private": <%= app.isPrivate %>,
+  "private": <%= String(!!(app.isPrivate)) %>,
   "ignore": [],
-  "dependencies": {}
+  "dependencies": {
+    "loglevel": "~0.5.0"
+  }
 }

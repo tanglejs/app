@@ -5,25 +5,25 @@ module.exports.prompt =  ->
 
   prompts = [
     type: 'input'
-    name: 'name'
+    name: 'author:name'
     message: 'Your name'
     default: =>
       conf.get 'user:name'
   ,
     type: 'input'
-    name: 'email'
+    name: 'author:email'
     message: 'Your email'
     default: =>
       conf.get 'user:email'
   ,
     type: 'input'
-    name: 'url'
+    name: 'author:url'
     message: 'Your homepage'
     default: =>
       conf.get 'user:url'
   ,
     type: 'input'
-    name: 'github'
+    name: 'author:github'
     message: 'Github username'
     default: =>
       conf.get 'user:github:username'
@@ -31,8 +31,8 @@ module.exports.prompt =  ->
 
   @prompt prompts, (props) =>
     @author =
-      name: props.name
-      email: props.email
-      url: props.url
-      github: props.github
+      name: props['author:name']
+      email: props['author:email']
+      url: props['author:url']
+      github: props['author:github']
     done()

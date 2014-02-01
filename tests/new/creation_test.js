@@ -42,20 +42,15 @@
     return describe('output', function() {
       beforeEach(function(done) {
         helpers.mockPrompt(this.app, {
-          name: 'tangle-test-app',
-          version: '0.1.0',
-          description: 'A test app',
-          homepage: 'https://tangle-test-app.example',
-          isPrivate: true,
-          author: {
-            name: 'Test Author',
-            email: 'author@example.com',
-            url: 'https://author.example.com',
-            githubUsername: 'testuser'
-          }
-        });
-        helpers.mockPrompt(this.app, {
-          name: 'tangle-test-app'
+          'app:name': 'tangle-test-app',
+          'app:version': '0.1.0',
+          'app:description': 'A test app',
+          'app:homepage': 'https://tangle-test-app.example',
+          'app:isPrivate': true,
+          'author:name': 'Test Author',
+          'author:email': 'author@example.com',
+          'author:url': 'https://author.example.com',
+          'author:githubUsername': 'testuser'
         });
         return done();
       });

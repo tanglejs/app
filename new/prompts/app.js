@@ -10,38 +10,38 @@
     prompts = [
       {
         type: 'input',
-        name: 'name',
+        name: 'app:name',
         message: 'App name',
         "default": function() {
           return path.basename(process.cwd());
         }
       }, {
         type: 'input',
-        name: 'version',
+        name: 'app:version',
         message: 'Current version',
         "default": '0.0.0'
       }, {
         type: 'input',
-        name: 'description',
+        name: 'app:description',
         message: 'Description'
       }, {
         type: 'input',
-        name: 'homepage',
+        name: 'app:homepage',
         message: 'Homepage'
       }, {
         type: 'confirm',
-        name: 'isPrivate',
+        name: 'app:isPrivate',
         message: 'Mark this package as private?',
         "default": true
       }
     ];
     return this.prompt(prompts, function(props) {
       _this.app = {
-        name: props.name,
-        version: props.version,
-        description: props.description,
-        homepage: props.homepage,
-        isPrivate: props.isPrivate
+        name: props['app:name'],
+        version: props['app:version'],
+        description: props['app:description'],
+        homepage: props['app:homepage'],
+        isPrivate: props['app:isPrivate']
       };
       return done();
     });
