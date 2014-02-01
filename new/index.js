@@ -54,7 +54,9 @@
     this.mkdir('app/styl');
     this.copy('app/initializers/_index.coffee', 'app/initializers/index.coffee');
     this.copy('app/initializers/_logger.coffee', 'app/initializers/logger.coffee');
-    return this.copy('app/styl/_app.styl', 'app/styl/app.styl');
+    this.copy('app/styl/_app.styl', 'app/styl/app.styl');
+    this.copy('app/_index.coffee', 'app/index.coffee');
+    return this.copy('app/_index.jade', 'app/index.jade');
   };
 
 }).call(this);

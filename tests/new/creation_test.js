@@ -58,7 +58,7 @@
       });
       return it('includes expected files', function(done) {
         var expected;
-        expected = ['.gitignore', 'bower.json', 'config.js', 'package.json', 'bower_components', 'node_modules', 'app', 'app/initializers', 'app/initializers/index.coffee', 'app/initializers/logger.coffee', 'app/modules', 'app/primitives', 'app/styl', 'app/styl/app.styl'];
+        expected = ['.gitignore', 'bower.json', 'config.js', 'package.json', 'bower_components', 'node_modules', 'app', 'app/initializers', 'app/initializers/index.coffee', 'app/initializers/logger.coffee', 'app/modules', 'app/primitives', 'app/styl', 'app/styl/app.styl', 'app/index.coffee', 'app/index.jade'];
         return this.app.run({}, function() {
           helpers.assertFiles(expected);
           return done();

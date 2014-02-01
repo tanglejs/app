@@ -1,7 +1,7 @@
 define [
-  'require',
-  'backbone.marionette',
-  'js/initializers/index',
+  'require'
+  'backbone.marionette'
+  'js/initializers/index'
   'js/modules/core/index'
 ], (require, Marionette, init) ->
 

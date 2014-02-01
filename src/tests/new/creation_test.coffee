@@ -59,6 +59,8 @@ describe 'generator', ->
         'app/primitives'
         'app/styl'
         'app/styl/app.styl'
+        'app/index.coffee'
+        'app/index.jade'
       ]
 
       @app.run {}, ->

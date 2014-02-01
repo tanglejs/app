@@ -40,3 +40,5 @@ AppGenerator::createAppRoot = ->
   @copy 'app/initializers/_index.coffee', 'app/initializers/index.coffee'
   @copy 'app/initializers/_logger.coffee', 'app/initializers/logger.coffee'
   @copy 'app/styl/_app.styl', 'app/styl/app.styl'
+  @copy 'app/_index.coffee', 'app/index.coffee'
+  @copy 'app/_index.jade', 'app/index.jade'
