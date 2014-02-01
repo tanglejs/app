@@ -29,11 +29,28 @@
 
   AppGenerator.prototype.appPrompts = require('./prompts/app').prompt;
 
+  AppGenerator.prototype.authorPrompts = require('./prompts/author').prompt;
+
   AppGenerator.prototype.copyFiles = function() {
-    this.mkdir('app');
     this.mkdir('build');
     this.mkdir('tests');
-    return this.copy('gitignore', '.gitignore');
+    this.mkdir('bower_components');
+    this.mkdir('node_modules');
+    this.copy('gitignore', '.gitignore');
+    this.copy('_bower.json', 'bower.json');
+    this.copy('_config.js', 'config.js');
+    return this.copy('_package.json', 'package.json');
+  };
+
+  AppGenerator.prototype.createAppRoot = function() {
+    this.mkdir('app');
+    this.mkdir('app/initializers');
+    this.mkdir('app/modules');
+    this.mkdir('app/primitives');
+    this.mkdir('app/styl');
+    this.copy('app/initializers/_index.coffee', 'app/initializers/index.coffee');
+    this.copy('app/initializers/_logger.coffee', 'app/initializers/logger.coffee');
+    return this.copy('app/styl/_app.styl', 'app/styl/app.styl');
   };
 
 }).call(this);

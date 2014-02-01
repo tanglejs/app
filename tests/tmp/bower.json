@@ -1,0 +1,13 @@
+{
+  "name": "tangle-test-app",
+  "version": "",
+  "description": "",
+  "main": "build/www/js/index.js",
+  "homepage": "",
+  "authors": [
+    "tangle-test-app <>"
+  ],
+  "private": ,
+  "ignore": [],
+  "dependencies": {}
+}

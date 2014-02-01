@@ -16,9 +16,24 @@ module.exports = class AppGenerator extends yeoman.generators.Base
     @pkg = JSON.parse(@readFileAsString(path.join(__dirname, '../package.json')))
 
 AppGenerator::appPrompts = require('./prompts/app').prompt
+AppGenerator::authorPrompts = require('./prompts/author').prompt
 
 AppGenerator::copyFiles = ->
-  @mkdir 'app'
   @mkdir 'build'
   @mkdir 'tests'
+  @mkdir 'bower_components'
+  @mkdir 'node_modules'
   @copy 'gitignore', '.gitignore'
+  @copy '_bower.json', 'bower.json'
+  @copy '_config.js', 'config.js'
+  @copy '_package.json', 'package.json'
+
+AppGenerator::createAppRoot = ->
+  @mkdir 'app'
+  @mkdir 'app/initializers'
+  @mkdir 'app/modules'
+  @mkdir 'app/primitives'
+  @mkdir 'app/styl'
+  @copy 'app/initializers/_index.coffee', 'app/initializers/index.coffee'
+  @copy 'app/initializers/_logger.coffee', 'app/initializers/logger.coffee'
+  @copy 'app/styl/_app.styl', 'app/styl/app.styl'
