@@ -18,26 +18,28 @@
 
   describe('generator', function() {
     beforeEach(function(done) {
-      var _this = this;
-      return helpers.testDirectory(path.join(__dirname, 'tmp'), function(err) {
-        if (err) {
-          return done(err);
-        }
-        _this.app = helpers.createGenerator('tangle:app', [['../../../new', 'tangle:app']]);
-        _this.commandsRun = [];
-        _this.app.spawnCommand = function(cmd, args) {
-          _this.commandsRun.push([cmd, args]);
-          return asyncStub;
+      return helpers.testDirectory(path.join(__dirname, 'tmp'), (function(_this) {
+        return function(err) {
+          if (err) {
+            return done(err);
+          }
+          _this.app = helpers.createGenerator('tangle:app', [[require('../../new'), 'tangle:app']]);
+          _this.commandsRun = [];
+          _this.app.spawnCommand = function(cmd, args) {
+            _this.commandsRun.push([cmd, args]);
+            return asyncStub;
+          };
+          return done();
         };
-        return done();
-      });
+      })(this));
     });
     it('installs bower and npm dependencies', function(done) {
-      var _this = this;
-      return this.app.installDependencies(function() {
-        assert.deepEqual(_this.commandsRun, [['bower', ['install']], ['npm', ['install']]]);
-        return done();
-      });
+      return this.app.installDependencies((function(_this) {
+        return function() {
+          assert.deepEqual(_this.commandsRun, [['bower', ['install']], ['npm', ['install']]]);
+          return done();
+        };
+      })(this));
     });
     return describe('output', function() {
       beforeEach(function(done) {

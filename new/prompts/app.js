@@ -4,17 +4,18 @@
   path = require('path');
 
   module.exports.prompt = function() {
-    var done, prompts,
-      _this = this;
+    var done, prompts;
     done = this.async();
     prompts = [
       {
         type: 'input',
         name: 'app:name',
         message: 'App name',
-        "default": function() {
-          return path.basename(process.cwd());
-        }
+        "default": (function(_this) {
+          return function() {
+            return path.basename(process.cwd());
+          };
+        })(this)
       }, {
         type: 'input',
         name: 'app:version',
@@ -35,16 +36,18 @@
         "default": true
       }
     ];
-    return this.prompt(prompts, function(props) {
-      _this.app = {
-        name: props['app:name'],
-        version: props['app:version'],
-        description: props['app:description'],
-        homepage: props['app:homepage'],
-        isPrivate: props['app:isPrivate']
+    return this.prompt(prompts, (function(_this) {
+      return function(props) {
+        _this.app = {
+          name: props['app:name'],
+          version: props['app:version'],
+          description: props['app:description'],
+          homepage: props['app:homepage'],
+          isPrivate: props['app:isPrivate']
+        };
+        return done();
       };
-      return done();
-    });
+    })(this));
   };
 
 }).call(this);
