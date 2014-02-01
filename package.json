@@ -8,9 +8,9 @@
     "doc": "readme"
   },
   "bin": {
-    "tangle-app": "bin/tangle-app",
-    "tangle-app-new": "bin/tangle-app-new",
-    "tangle-app-build": "bin/tangle-app-build"
+    "tangle-app": "bin/tangle-app.coffee",
+    "tangle-app-new": "bin/tangle-app-new.coffee",
+    "tangle-app-build": "bin/tangle-app-build.coffee"
   },
   "scripts": {
     "test": "grunt test"
