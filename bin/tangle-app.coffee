@@ -1,5 +1,4 @@
 #!/usr/bin/env coffee
-require 'coffee-script/register'
 
 path = require 'path'
 
