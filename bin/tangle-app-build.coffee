@@ -1,4 +1,4 @@
-!/usr/bin/env coffee
+#!/usr/bin/env coffee
  
  exports.command =
    description: 'Build a tangle app'
