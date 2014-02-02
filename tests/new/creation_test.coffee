@@ -1,5 +1,3 @@
-require 'coffee-script/register'
-
 path = require 'path'
 helpers = require('yeoman-generator').test
 assert = require('chai').assert
