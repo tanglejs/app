@@ -34,6 +34,7 @@ module.exports = (grunt) ->
     mochacli:
       options:
         compilers: ['coffee:coffee-script/register']
+        timeout: '5000'
       all: ['tests/**/*_test.coffee']
 
     readme_generator:
