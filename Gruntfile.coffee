@@ -7,6 +7,7 @@
 #
 
 path = require 'path'
+tangleUtil = require 'tangle-util'
 
 module.exports = (grunt) ->
   #
@@ -34,7 +35,7 @@ module.exports = (grunt) ->
     mochacli:
       options:
         compilers: ['coffee:coffee-script/register']
-        timeout: '5000'
+        timeout: '10000'
       all: ['tests/**/*_test.coffee']
 
     readme_generator:
@@ -47,8 +48,24 @@ module.exports = (grunt) ->
           package_title: 'tangle-app'
           package_name: 'tangle-app'
         order:
-          'usage.md': 'Usage'
-          'examples.md': 'Examples'
+          'usage.md': 'USAGE'
+          'examples.md': 'EXAMPLES'
+
+      build:
+        options:
+          output: 'tangle-app-build.md'
+          table_of_contents: false
+          generate_footer: false
+          has_travis: false
+          package_title: 'tangle-app-build'
+          package_desc: 'Build a tangle app'
+          package_name: 'tangle-app-build'
+        order:
+          'subcommands/build/overview.md': 'OVERVIEW'
+          'subcommands/build/default.md': 'DEFAULT BEHAVIOR'
+          'subcommands/build/environments.md': 'ENVIRONMENTS'
+          'subcommands/build/tasks.md': 'TASKS'
+
       readme:
         options:
           banner: 'banner.md'
@@ -81,19 +98,20 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-readme-generator'
   grunt.loadNpmTasks 'grunt-bump'
 
-  grunt.registerTask 'marked-man', ->
-    done = @async()
-    grunt.util.spawn
-      cmd: './marked-man'
-      args: [path.join(__dirname, 'tangle-app.md')]
-      opts:
-        cwd: path.join(__dirname, 'node_modules', 'marked-man', 'bin')
-    , (error, result, code) ->
-      throw error if error
-      out = path.join __dirname, 'man', 'tangle-app.1'
-      grunt.file.write out, result.stdout
-      done()
+  tangleUtil.grunt.registerMarkedMan 'manpage-app', grunt,
+    path.join(__dirname, 'tangle-app.md'),
+    path.join(__dirname, 'man', 'tangle-app.1')
 
-  grunt.registerTask 'build', ['clean', 'readme_generator', 'marked-man']
+  tangleUtil.grunt.registerMarkedMan 'manpage-app-build', grunt,
+    path.join(__dirname, 'tangle-app-build.md'),
+    path.join(__dirname, 'man', 'tangle-app-build.1')
+
+  grunt.registerTask 'build', [
+    'clean'
+    'readme_generator'
+    'manpage-app'
+    'manpage-app-build'
+  ]
+
   grunt.registerTask 'test', ['mochacli']
   grunt.registerTask 'default', ['build', 'test']

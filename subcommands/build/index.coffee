@@ -1,6 +1,7 @@
 module.exports = AppBuilder = (grunt) ->
   path = require 'path'
   conf = require('tangle-config').getProject()
+  require('grunt-log-headers')(grunt)
 
   inside = (newDir, callback) ->
     prevDir = process.cwd()
@@ -8,7 +9,26 @@ module.exports = AppBuilder = (grunt) ->
     callback -> grunt.file.setBase(prevDir)
 
   grunt.initConfig
-    pkg: grunt.file.readJSON 'package.json'
+    availabletasks:
+      tasks:
+        options:
+          gruntLogHeader: false
+          filter: 'include'
+          tasks: [
+            'clean'
+            'bower'
+            'tasks'
+          ]
+          groups:
+            'All build tasks': [
+              'bower'
+              'clean'
+              'tasks'
+            ]
+          descriptions:
+            'clean': 'Empty the build/ directory'
+            'bower': 'Update config.js paths for installed Bower components'
+            'tasks': 'Display a list of available tasks'
 
     clean:
       build: ['build/*']
@@ -124,16 +144,18 @@ module.exports = AppBuilder = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-concat'
     grunt.loadNpmTasks 'grunt-requirejs'
     grunt.loadNpmTasks 'grunt-rename'
+    grunt.loadNpmTasks 'grunt-available-tasks'
     done()
 
   grunt.registerTask 'components', [
-    'bower:config'
     'symlink:components'
     "concat:#{conf.get('environment')}"
     "requirejs:#{conf.get('environment')}"
     'clean:www'
     'rename:tmp'
   ]
+
+  grunt.registerTask 'tasks', 'availabletasks'
 
   grunt.registerTask 'default', [
     'clean:build'

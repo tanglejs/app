@@ -1,0 +1,65 @@
+.TH "TANGLE\-APP\-BUILD" "" "March 2014" "" ""
+.SH "NAME"
+\fBtangle-app-build\fR
+.QP
+.P
+Build a tangle app
+
+.
+.SH OVERVIEW
+.P
+\fBtangle app build\fR performs a series of tasks to prepare your app for the browser\.
+.P
+The result of this process can be found under the \fBbuild/\fR directory in your project\.
+.SH DEFAULT BEHAVIOR
+.P
+By default, it will\.\.\.
+.RS 0
+.IP \(bu 2
+Clean the build directory
+.IP \(bu 2
+Convert your CoffeeScript files to JavaScript
+.IP \(bu 2
+Convert your Stylus files to CSS
+.IP \(bu 2
+Compile your Jade templates
+.IP \(bu 2
+Symlink your \fBbower_components/\fR directory
+.IP \(bu 2
+Apply your \fBconfig\.js\fR and optimize for RequireJS
+
+.RE
+.SH ENVIRONMENTS
+.P
+Some tasks will behave differently depending on your current environment setting\.
+.P
+For example, some output files might be compressed in "production", but prettified
+and with source maps in "development"\.
+.P
+You can set the environment each time you run the build, such as
+.P
+.RS 2
+.EX
+$ environment=production tangle app build
+.EE
+.RE
+.P
+Or you can set it in your project \fBtangle\.json\fR instead
+.P
+.RS 2
+.EX
+$ tangle config \-f \./tangle\.json \-k environment \-v production
+.EE
+.RE
+.P
+The default environment is "development"\.
+.SH TASKS
+.P
+\fBtangle app build [task]\fR will run only the requested task\.
+.P
+Do not assume that all available tasks are included when you run \fBtangle app build\fR
+without arguments \- some extras are included that do not need to be run every build\.
+.P
+For a list of available build tasks, refer to\.\.\.
+.P
+  $ tangle app build tasks

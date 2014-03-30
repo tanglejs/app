@@ -2,13 +2,13 @@
 
 > Tools for working with tangle apps
 
-## Usage
+## USAGE
 
     --option, -o [String] - An example option.
     --help, -h - Display this message
 
 
-## Examples
+## EXAMPLES
 
     # Executing app with no options
     $ tangle-app
