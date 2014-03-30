@@ -131,6 +131,8 @@ module.exports = AppBuilder = (grunt) ->
     'symlink:components'
     "concat:#{conf.get('environment')}"
     "requirejs:#{conf.get('environment')}"
+    'clean:www'
+    'rename:tmp'
   ]
 
   grunt.registerTask 'default', [
