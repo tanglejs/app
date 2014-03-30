@@ -46,6 +46,7 @@ describe 'generator', ->
       # add files you expect to exist here.
       expected = [
         '.gitignore'
+        '.bowerrc'
         'bower.json'
         'config.js'
         'package.json'
