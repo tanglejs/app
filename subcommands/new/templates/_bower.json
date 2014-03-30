@@ -10,6 +10,7 @@
   "private": <%= String(!!(app.isPrivate)) %>,
   "ignore": [],
   "dependencies": {
+    "requirejs": "~2.1.11",
     "loglevel": "~0.5.0"
   }
 }

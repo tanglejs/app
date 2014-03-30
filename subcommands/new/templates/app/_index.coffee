@@ -9,9 +9,7 @@ define [
 
   App.addInitializer init.logger
 
-  App.module 'Core', require('js/modules/core/index')
-
   App.on 'start', (options) ->
-    App.log.info 'App started. Do routing and stuff?'
+    App.logger.info 'Your application has started!'
 
   return App

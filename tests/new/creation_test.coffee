@@ -60,6 +60,7 @@ describe 'generator', ->
         'app/styl'
         'app/styl/app.styl'
         'app/index.coffee'
+        'app/main.coffee'
         'app/index.jade'
       ]
 
