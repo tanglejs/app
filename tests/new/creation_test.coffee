@@ -48,6 +48,7 @@ describe 'generator', ->
         '.gitignore'
         '.bowerrc'
         'bower.json'
+        'tangle.json'
         'config.js'
         'package.json'
         'bower_components'
