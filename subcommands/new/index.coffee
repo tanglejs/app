@@ -27,7 +27,6 @@ AppGenerator::copyFiles = ->
   @copy 'gitignore', '.gitignore'
   @copy '_bower.json', 'bower.json'
   @copy '_bowerrc', '.bowerrc'
-  @copy '_tangle.json', 'tangle.json'
   @copy '_config.js', 'config.js'
   @copy '_package.json', 'package.json'
 
@@ -43,3 +42,4 @@ AppGenerator::createAppRoot = ->
   @copy 'app/_index.coffee', 'app/index.coffee'
   @copy 'app/_index.jade', 'app/index.jade'
   @copy 'app/_main.coffee', 'app/main.coffee'
+  @copy 'app/_tangle.json', 'app/tangle.json'

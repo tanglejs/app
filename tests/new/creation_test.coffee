@@ -48,7 +48,6 @@ describe 'generator', ->
         '.gitignore'
         '.bowerrc'
         'bower.json'
-        'tangle.json'
         'config.js'
         'package.json'
         'bower_components'
@@ -64,6 +63,7 @@ describe 'generator', ->
         'app/index.coffee'
         'app/main.coffee'
         'app/index.jade'
+        'app/tangle.json'
       ]
 
       @app.run {}, ->
