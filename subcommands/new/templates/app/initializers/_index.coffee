@@ -1,2 +1,2 @@
 define (require) ->
-  logger:      require 'js/initializers/logger'
+  logger: require 'js/initializers/logger'
