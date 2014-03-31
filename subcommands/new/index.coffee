@@ -27,6 +27,7 @@ AppGenerator::copyFiles = ->
   @copy 'gitignore', '.gitignore'
   @copy '_bower.json', 'bower.json'
   @copy '_bowerrc', '.bowerrc'
+  @copy '_tangle.json', 'tangle.json'
   @copy '_config.js', 'config.js'
   @copy '_package.json', 'package.json'
 

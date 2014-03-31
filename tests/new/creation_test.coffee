@@ -47,6 +47,7 @@ describe 'generator', ->
       expected = [
         '.gitignore'
         '.bowerrc'
+        'tangle.json'
         'bower.json'
         'config.js'
         'package.json'

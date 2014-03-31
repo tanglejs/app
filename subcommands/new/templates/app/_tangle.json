@@ -1,6 +1,4 @@
 {
   "name": "<%= app.name %>",
-  "type": "app",
-  "version": "<%= app.version %>",
-  "environment": "development"
+  "type": "app"
 }
