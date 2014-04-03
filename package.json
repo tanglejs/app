@@ -10,7 +10,8 @@
   "bin": {
     "tangle-app": "bin/tangle-app.coffee",
     "tangle-app-new": "bin/tangle-app-new.coffee",
-    "tangle-app-build": "bin/tangle-app-build.coffee"
+    "tangle-app-build": "bin/tangle-app-build.coffee",
+    "tangle-app-connect": "bin/tangle-app-connect.coffee"
   },
   "scripts": {
     "test": "grunt test"
@@ -37,7 +38,8 @@
     "grunt-contrib-concat": "^0.3.0",
     "grunt-requirejs": "^0.4.1",
     "grunt-rename": "^0.1.3",
-    "grunt-available-tasks": "^0.4.3"
+    "grunt-available-tasks": "^0.4.3",
+    "grunt-contrib-connect": "^0.7.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

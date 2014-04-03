@@ -66,6 +66,18 @@ module.exports = (grunt) ->
           'subcommands/build/environments.md': 'ENVIRONMENTS'
           'subcommands/build/tasks.md': 'TASKS'
 
+      connect:
+        options:
+          output: 'tangle-app-connect.md'
+          table_of_contents: false
+          generate_footer: false
+          has_travis: false
+          package_title: 'tangle-app-connect'
+          package_desc: 'Start a webserver'
+          package_name: 'tangle-app-connect'
+        order:
+          'subcommands/connect/overview.md': 'OVERVIEW'
+
       readme:
         options:
           banner: 'banner.md'
@@ -106,11 +118,16 @@ module.exports = (grunt) ->
     path.join(__dirname, 'tangle-app-build.md'),
     path.join(__dirname, 'man', 'tangle-app-build.1')
 
+  tangleUtil.grunt.registerMarkedMan 'manpage-app-connect', grunt,
+    path.join(__dirname, 'tangle-app-connect.md'),
+    path.join(__dirname, 'man', 'tangle-app-connect.1')
+
   grunt.registerTask 'build', [
     'clean'
     'readme_generator'
     'manpage-app'
     'manpage-app-build'
+    'manpage-app-connect'
   ]
 
   grunt.registerTask 'test', ['mochacli']
