@@ -12,6 +12,7 @@
   "dependencies": {
     "requirejs": "~2.1.11",
     "requirejs-plugins": "~1.0.2",
-    "loglevel": "~0.5.0"
+    "loglevel": "~0.5.0",
+    "backbone.marionette": "~1.7.3"
   }
 }
