@@ -55,8 +55,6 @@ describe 'generator', ->
         'node_modules'
         'app'
         'app/initializers'
-        'app/initializers/index.coffee'
-        'app/initializers/logger.coffee'
         'app/modules'
         'app/primitives'
         'app/styl'

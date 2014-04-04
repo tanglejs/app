@@ -18,17 +18,31 @@ module.exports = AppBuilder = (grunt) ->
             'clean'
             'bower'
             'tasks'
+            'initializers'
+            'coffee'
+            'stylus'
+            'components'
           ]
           groups:
-            'All build tasks': [
+            'Build tasks': [
               'bower'
               'clean'
               'tasks'
+            ]
+            'Update tasks': [
+              'initializers'
+              'coffee'
+              'stylus'
+              'components'
             ]
           descriptions:
             'clean': 'Empty the build/ directory'
             'bower': 'Update config.js paths for installed Bower components'
             'tasks': 'Display a list of available tasks'
+            'initializers': 'Rebuild app initializers'
+            'coffee': 'Rebuild app coffeescript'
+            'stylus': 'Rebuild app stylesheets'
+            'components': 'Relink and optimize Bower components'
 
     clean:
       build: ['build/*']
@@ -48,7 +62,7 @@ module.exports = AppBuilder = (grunt) ->
           expand: true
           cwd: 'app/'
           dest: 'build/www/js/'
-          src: ['**/*.coffee']
+          src: ['**/*.coffee', '**/*.json']
         ]
 
     coffee:
@@ -57,6 +71,13 @@ module.exports = AppBuilder = (grunt) ->
         cwd: 'build/www/js/'
         dest: 'build/www/js/'
         src: ['**/*.coffee']
+        ext: '.js'
+
+      initializers:
+        expand: true
+        cwd: 'app/'
+        dest: 'build/www/js/'
+        src: ['**/initializers/**/*.coffee']
         ext: '.js'
 
     jade:
@@ -154,6 +175,8 @@ module.exports = AppBuilder = (grunt) ->
     'clean:www'
     'rename:tmp'
   ]
+
+  grunt.registerTask 'initializers', ['coffee:initializers']
 
   grunt.registerTask 'tasks', 'availabletasks'
 

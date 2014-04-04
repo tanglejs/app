@@ -1,4 +1,6 @@
 {
   "name": "<%= app.name %>",
-  "type": "app"
+  "type": "app",
+  "initializers": {},
+  "modules": {}
 }
