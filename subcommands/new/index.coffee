@@ -15,6 +15,10 @@ module.exports = class AppGenerator extends yeoman.generators.Base
       @installDependencies
         bower: true
         npm: true
+        callback: =>
+          configjs = @readFileAsString 'config.js'
+          configjs = configjs.replace "'require-jade':", "'jade':"
+          @write 'config.js', configjs
 
 AppGenerator::appPrompts = require('./prompts/app').prompt
 AppGenerator::authorPrompts = require('./prompts/author').prompt

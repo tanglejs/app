@@ -36,7 +36,6 @@ module.exports = AppBuilder = (grunt) ->
   grunt.registerTask 'tasks', 'availabletasks'
 
   grunt.registerTask 'app', [
-    'clean:build'
     'copy:app'
     'stylus:app'
     'coffee:app'
@@ -44,19 +43,18 @@ module.exports = AppBuilder = (grunt) ->
   ]
 
   grunt.registerTask 'modules', [
-    'clean:modules'
     'copy:modules'
     'coffee:modules'
   ]
 
   grunt.registerTask 'primitives', [
-    'clean:primitives'
     'copy:primitives'
     'coffee:primitives'
   ]
 
   grunt.registerTask 'default', [
     'app'
+    'initializers'
     'modules'
     'primitives'
     'components'
