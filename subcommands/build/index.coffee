@@ -1,160 +1,23 @@
 module.exports = AppBuilder = (grunt) ->
   path = require 'path'
   conf = require('tangle-config').getProject()
+  inside = require('tangle-util/grunt').inside
   require('grunt-log-headers')(grunt)
 
-  inside = (newDir, callback) ->
-    prevDir = process.cwd()
-    grunt.file.setBase newDir
-    callback -> grunt.file.setBase(prevDir)
+  require('grunt-config-dir') grunt,
+    configDir: path.resolve(__dirname, 'tasks')
+    fileExtensions: ['coffee']
+  , (err) -> grunt.log.error err
 
-  grunt.initConfig
-    availabletasks:
-      tasks:
-        options:
-          gruntLogHeader: false
-          filter: 'include'
-          tasks: [
-            'clean'
-            'bower'
-            'tasks'
-            'initializers'
-            'coffee'
-            'stylus'
-            'components'
-          ]
-          groups:
-            'Build tasks': [
-              'bower'
-              'clean'
-              'tasks'
-            ]
-            'Update tasks': [
-              'initializers'
-              'coffee'
-              'stylus'
-              'components'
-            ]
-          descriptions:
-            'clean': 'Empty the build/ directory'
-            'bower': 'Update config.js paths for installed Bower components'
-            'tasks': 'Display a list of available tasks'
-            'initializers': 'Rebuild app initializers'
-            'coffee': 'Rebuild app coffeescript'
-            'stylus': 'Rebuild app stylesheets'
-            'components': 'Relink and optimize Bower components'
+  grunt.registerTask 'components', [
+    'symlink:components'
+    "concat:#{conf.get('environment')}"
+    "requirejs:#{conf.get('environment')}"
+    'clean:www'
+    'rename:tmp'
+  ]
 
-    clean:
-      build: ['build/*']
-      www: ['build/www']
-      tmp: ['build/tmp']
-
-    stylus:
-      app:
-        options:
-          compress: false
-        files:
-          'build/www/css/app.css': 'app/styl/**/*.styl'
-
-    copy:
-      app:
-        files: [
-          expand: true
-          cwd: 'app/'
-          dest: 'build/www/js/'
-          src: ['**/*.coffee', '**/*.json']
-        ]
-
-    coffee:
-      app:
-        expand: true
-        cwd: 'build/www/js/'
-        dest: 'build/www/js/'
-        src: ['**/*.coffee']
-        ext: '.js'
-
-      initializers:
-        expand: true
-        cwd: 'app/'
-        dest: 'build/www/js/'
-        src: ['**/initializers/**/*.coffee']
-        ext: '.js'
-
-    jade:
-      app:
-        src: ['app/*.jade']
-        dest: 'build/www/'
-        options:
-          client: false
-          locals:
-            build:
-              name: conf.get 'name'
-              version: conf.get 'version'
-              environment: conf.get 'environment'
-              timestamp: Date.now()
-
-    bower:
-      config:
-        rjsConfig: 'config.js'
-        options:
-          transitive: true
-
-    symlink:
-      components:
-        src: 'bower_components/'
-        dest: 'build/www/bower_components'
-
-    concat:
-      development:
-        files:
-          'build/www/js/main.js': [
-            'config.js'
-            'build/www/js/main.js'
-          ]
-      production:
-        banner: "requirejs.config({ baseUrl: '../' });\n"
-        files:
-          'build/www/js/main.js': [
-            'config.js'
-            'build/www/js/main.js'
-          ]
-
-    requirejs:
-      development:
-        options:
-          appDir: 'build/www'
-          dir: 'build/tmp'
-          mainConfigFile: 'config.js'
-
-          optimize: 'none'
-          removeCombined: false
-          findNestedDependencies: false
-
-      production:
-        options:
-          appDir: 'build/www'
-          dir: 'build/tmp'
-          mainConfigFile: 'config.js'
-
-          optimize: 'uglify2'
-          removeCombined: true
-          findNestedDependencies: true
-
-          modules: [
-            name: "#{conf.get('name')}.bundle"
-            create: true
-            include: [
-              'requirejs'
-              'js/index'
-            ]
-          ]
-
-    rename:
-      tmp:
-        src: 'build/tmp'
-        dest: 'build/www'
-
-  inside path.join(__dirname, '..', '..'), (done) ->
+  inside path.join(__dirname, '..', '..'), grunt, (done) ->
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-stylus'
     grunt.loadNpmTasks 'grunt-contrib-copy'
@@ -167,14 +30,6 @@ module.exports = AppBuilder = (grunt) ->
     grunt.loadNpmTasks 'grunt-rename'
     grunt.loadNpmTasks 'grunt-available-tasks'
     done()
-
-  grunt.registerTask 'components', [
-    'symlink:components'
-    "concat:#{conf.get('environment')}"
-    "requirejs:#{conf.get('environment')}"
-    'clean:www'
-    'rename:tmp'
-  ]
 
   grunt.registerTask 'initializers', ['coffee:initializers']
 
