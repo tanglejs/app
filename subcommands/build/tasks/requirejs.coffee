@@ -3,7 +3,7 @@ module.exports = (grunt) ->
 
   development:
     options:
-      appDir: 'build/www'
+      appDir: 'build/app'
       dir: 'build/tmp'
       mainConfigFile: 'config.js'
 
@@ -13,7 +13,7 @@ module.exports = (grunt) ->
 
   production:
     options:
-      appDir: 'build/www'
+      appDir: 'build/app'
       dir: 'build/tmp'
       mainConfigFile: 'config.js'
 
@@ -26,7 +26,7 @@ module.exports = (grunt) ->
         create: true
         include: [
           'requirejs'
-          'js/index'
+          'index'
         ]
       ]
 

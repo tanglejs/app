@@ -13,7 +13,7 @@ module.exports = AppBuilder = (grunt) ->
     'symlink:components'
     "concat:#{conf.get('environment')}"
     "requirejs:#{conf.get('environment')}"
-    'clean:www'
+    'clean:app'
     'rename:tmp'
   ]
 
@@ -35,11 +35,29 @@ module.exports = AppBuilder = (grunt) ->
 
   grunt.registerTask 'tasks', 'availabletasks'
 
-  grunt.registerTask 'default', [
+  grunt.registerTask 'app', [
     'clean:build'
     'copy:app'
     'stylus:app'
     'coffee:app'
     'jade:app'
+  ]
+
+  grunt.registerTask 'modules', [
+    'clean:modules'
+    'copy:modules'
+    'coffee:modules'
+  ]
+
+  grunt.registerTask 'primitives', [
+    'clean:primitives'
+    'copy:primitives'
+    'coffee:primitives'
+  ]
+
+  grunt.registerTask 'default', [
+    'app'
+    'modules'
+    'primitives'
     'components'
   ]

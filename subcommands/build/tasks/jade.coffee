@@ -3,7 +3,7 @@ module.exports = (grunt) ->
 
   app:
     src: ['app/*.jade']
-    dest: 'build/www/'
+    dest: 'build/app/'
     options:
       client: false
       locals:

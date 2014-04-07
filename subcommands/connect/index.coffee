@@ -15,7 +15,7 @@ module.exports = AppConnect = (grunt) ->
           gruntLogHeader: false
           keepalive: true
           port: 3000
-          base: './build/www'
+          base: './build/app'
           livereload: true
 
   inside path.join(__dirname, '..', '..'), (done) ->

@@ -4,4 +4,4 @@ module.exports = (grunt) ->
     options:
       compress: false
     files:
-      'build/www/css/app.css': 'app/styl/**/*.styl'
+      'build/app/app.css': 'app/styl/**/*.styl'
