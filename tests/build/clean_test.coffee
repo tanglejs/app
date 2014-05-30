@@ -18,6 +18,6 @@ describe 'Running "grunt clean"', ->
       .after -> done()
       .cwd dir
       .writeFile path.join(buildDir, 'garbage')
-      .run 'tangle app build clean'
+      .run '../../bin/tangle-app-build.coffee clean'
       .end ->
         buildDir.should.be.a.directory().and.empty
